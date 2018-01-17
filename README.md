@@ -26,7 +26,7 @@ __Trabajo individual o en parejas__
 	```
 * Para ejecutar:
 	```bash
-	mvn exec:java  -Dexec.mainClass=edu.eci.arsw.wordprocessor.view.GuordMainFrame
+	mvn exec:java  -Dexec.mainClass=hangman.SwingProject
 	```
 
 En este repositorio se encuentra una versión de escritorio del popular juego 'ahorcado' (la cual es una versión ligeramente modificada del proyecto desarrollado por Omar Rodriguez y Nahid Enayatzadeh).
