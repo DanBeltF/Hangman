@@ -1,136 +1,95 @@
-#Escuela Colombiana de Ingeniería
-##Procesos de Desarrollo de Software - PDSW
+## Escuela Colombiana de Ingeniería
 
+### Procesos de Desarrollo de Software 
 
+## Laboratorio - Patrones Creacionales, Principios SOLID
 
-Software de microcontrolador para la fabricación automática de pizza.
+__Trabajo individual o en parejas__
 
-Entregables:
+## Entregables:
 
-* Parte I, antes de finalizar la clase, en moodle.
-* Parte II-1, impreso en la próxima clase.
-* Parte II-2, antes del próximo laboratorio, vía moodle.
+**Jueves en clase**: Diseño de la nueva aplicación (diagrama de clases + diagrama de paquetes).
 
-####Parte I. 
-El siguiente, es un modelo de clases de una aplicación que se comunica con un microcontrolador encargado de la fabricación automática de pizzas. Dichas clases encapsulan la lógica para amasar, hornear y moldear pizzas de las pizzas delgadas.
+**Martes en clase**: Avance + dudas.
 
-![alt text](img/Model.png "Logo Title Text 1")
+**Jueves a las 10:00am**: Ejercicio terminado.
 
-El programa principal del micro-controlador utiliza la siguiente función, la cual depende de las clases antes mostradas:
+***Instrucciones para Maven y GIT:*** Se requiere Linux.
+* Para descargar la aplicación, desde una terminal, clone el repositorio, y luego abralo con NetBeans:
 
-```Java
-public void prepararPizza(Ingredientes[] ingredientes, Tamano tam) 
-throws ExcepcionParametrosInvalidos{
-	AmasadorPizzaDelgada am=new AmasadorPizzaDelgada();
-	HorneadorPizzaDelgada hpd=new HorneadorPizzaDelgada();
-	MoldeadorPizzaDelgada mp=new MoldeadorPizzaDelgada();
-	am.amasar();
-	if (tam == Tamano.PEQUENA){
-		mp.moldearPizzaPequena();
-	}
-	else if(tam==Tamano.MEDIANA){
-		mp.molderarPizzaMediana();
-	}
-	else{
-		throw new ExcepcionParametrosInvalidos (“Tamano de piza invalido:”+tam);
-	}
-		aplicarIngredientes(ingredientes);
-		hpd.hornear();
-	}
-	...
-```
+	```bash
+	git clone https://github.com/PDSW-ECI/GoF-CreationalPatterns-FactoryMethod-Exercise.git
+	```
+* Para compilar, desde el directorio creado con el paso anterior:
+	```bash
+	mvn compile
+	```
+* Para ejecutar:
+	```bash
+	mvn exec:java  -Dexec.mainClass=edu.eci.arsw.wordprocessor.view.GuordMainFrame
+	```
 
-Se quiere actualizar el software, ya que el fabricante de las máquina va a sacar al mercado unas variantes de la máquina original, y quiere simplificar el proceso de adaptación del código de los microcontroladores. Por ahora se espera sacar dos variantes:
-
-*	Máquina para preparar pizzas de masa gruesa (masa de pan).
-*	Máquina para preparar pizzas de masa integral.
-
-Es importante tener en cuenta que para dichas variantes, aunque la secuencia de pasos del proceso principal es el mismo, los procesos de amasado, moldeado y horneado son diferentes para cada variante.
-
-Dado que es posible que en el futuro salgan variantes adicionales de esta máquina, y que se sabe que la secuencia de pasos en general NO cambiará, se le ha pedido que el software quede escrito de manera que la lógica básica no requiera cambios, independientemente de cómo se amase, como se hornee y cómo se moldee en dichas variantes.
-
-1.	Teniendo esto en cuenta, y considerando el patrón de fábrica abstracta, plantee el modelo de clases que permitiría desacoplar la lógica de la fabricación de pizzas, de las diferentes manera como se pueden realizar las actividades de bajo nivel relacionadas (cocción, corte, etc.).
-
-2.	Descargue el proyecto mediante el comando git (git clone) :
-```
-git clone https://github.com/PDSW-2015-2/GoF-Patterns-Creational-PizzaFactory.git
-```
-	y ábralo en el IDE NetBeans.
-
-3.	Revise el funcionamiento actual de la aplicación. Como este es un proyecto Maven, ejecútelo a través de la línea de comando (desde el directorio del proyecto):
-
-```
-mvn exec:java -Dexec.mainClass="edu.eci.pdsw.pizzafactory.consoleview.PreparadorPizza"
-```
-
-4.	Implemente el modelo propuesto. Para compilar después de haber hecho cambios, hágalo a través de Maven con: 
-
-```
-mvn compile
-```
-
-Nota: Si lo desea, puede revisar una [implementación de referencia del patrón Fábrica Abstracta](https://github.com/PDSW-ECI/GoF-AbstractFactory-SampleImplementation.git ), cuyo modelo corresponde al del siguiente diagrama ![](BasicExample.png)
-
-
-
-####Parte II. 
-
-Ahora, va a aplicar el patrón creacional 'fábrica abstracta' para un proceso de _refactoring_ de una implementación del popular juego 'ahorcado'. El código está basado en el proyecto creado por Omar Rodriguez, Nahid Enayatzadeh, Marc Deaso, Christopher Santos, Jazmin Guerrero, y que está disponible en https://github.com/oarodrig/SwingHangman .
+En este repositorio se encuentra una versión de escritorio del popular juego 'ahorcado' (la cual es una versión ligeramente modificada del proyecto desarrollado por Omar Rodriguez y Nahid Enayatzadeh).
 
 ![](img/GameScreenShot.png)
 
-La razón del _refactoring_ es un nuevo requerimiento, en el que se le ha indicado que se debe poder (1) ajustar fácilmente la identidad del juego, y (2) agregar nuevas identidades. La identidad va asociada a la región donde eventualmente sea distribuido el juego, e incluye:
+Como se observa en la imagen anterior, el juego está orientado al público de habla inglesa (el juego de caracteres y el juego de palabras que se presentan al azar corresponden al inglés), y como representación gráfica se hace uso del popular 'stickman'
 
-* El juego de caracteres que se use en cada región.
-* La representación gráfica del 'ahorcado'
-* El conjunto de palabras que usará aleatoriamente el juego.
+__Ejercicio.__
 
-El conjunto de caracteres, la representación gráfica del ahorcado, y el conjunto de palabras usados actualmente se condierán para la región de Norte América. Se quiere, por ahora, considerar otras dos regiones:
+Se le ha pedido que revise la aplicación y haga con la misma un ejericicio de ‘refactoring’, de manera que para la misma se logre cumplir con el principio abierto/cerrado en los siguientes aspectos:
 
-- Latinoamérica:
-	* El mismo juego de caracteres norteamericano, pero incluyendo la Ñ.
-	* El personaje debe ser colorido:
-	
-		![](img/latinam.png)
+- El juego debe poderse internacionalizar fácilmente. Es decir, la aplicación se debe poder adaptar a nuevos idiomas sin necesidad de el _CORE_ de la misma, teniendo en cuenta que un nuevo idioma implica:
+	* Un conjunto de posibles palabras a adivinar diferente.
+	* Un conjunto de caracteres diferente (por ejemplo, en español y portugués se tendrán caracteres especiales).
+	* Textos diferentes en las etiquetas y botones de la interfaz de usuario.
+
+- El juego debe poderse adaptar a nuevos estilos visuales del 'ahoracado', nuevamente sin tener que modificar el _CORE_.
+
+Como prueba de concepto, se espera que la aplicación inicialmente soporte tres idiomas:
+
+
+- Inglés (el usuado actualmente).
+- Español:
+	* El mismo juego de caracteres del inglés, pero incluyendo la Ñ.
 	* Como conjunto de palabras, al menos cinco tomadas de [este enlace.](http://www.clarin.com/sociedad/palabras-mas-usadas-espanol-comunes-frecuentes-diccionario-real_academia_espanola_0_ByLqjSFvmg.html)
 
-- Europa-Francia:
-	* El mismo juego de caracteres norteamericano, pero incluyendo: à, è, ì, ò, ù .
-	* Como hay una legislación que prohibe juegos violentos, en lugar de una horca se debe mostrar unos signos de admiración con cada fallo:
-	
-		![](img/germany.png)
+- Francés:
+	* El mismo juego de caracteres del inglés, pero incluyendo: à, è, ì, ò, ù .
 	* Como conjunto de palabras, al menos cinco tomadas de [este enlace.](http://www.lexisrex.com/Palabras-Frecuentes-Franc%C3%A9s/page=3).
 
-### Parte II-1
 
-Clone el proyecto de este repositorio, analice la funcionalidad de la aplicación, y haga el diseño del modelo de clases del patrón de fábrica abstracta aplicado en este contexto (no es necesario incluir las clases del juego original en el diagrama). Recuerde tener en cuenta: productos abstractos, productos concretos, fábricas abstractas, fábricas concretas. El diagrama debe mostrar métodos incluye cada clase.
+Por otro lado, se quiere manejar tres estilos visuales para el ahorcado:
 
-### Parte II-2
+- El 'stickman' tradicional, usado actualmente.
+- Ahorcado no violento:	No muestra una horca, sino signos de admiración al personaje tras cada error:
 
-Haga la implementación y rectifique que (1) se pueda cambiar la región objetivo del juego sin cambiar el código, y (2) sea factible agregar soporte a nuevas regiones.
+	![](img/germany.png)
 
+- Ahorcado colorido: un 'stickman' tradicional pero con color.
 
-#### Criterios de evaluación
-
-1. Parte I.
-	* Funcional. 
-		1. El preparador de pizzas cambia su comportamiento al cambiar la configuración de la fábrica abstracta.
-
-2. Parte II.
-
-	* Diseño.
-
-		1. En los fuentes de la vista o del control del juego no debe existir ninguna referencia a elementos que hagan referencia a una región en particular.
-		2. Las abstracciones identificadas no dependen de la capa de presentación (por ejemplo, no se debería tener algo de tipo JPanel como producto abstracto).
-		3. Los productos concretos NO tienen código repetido entre sí (si esto es así, hay otro problema en el diseño).
-		
-	* Funcionalidad.
-
-		1. Sólo con cambiar la configuración de la fábrica abstracta, debe cambiar la región objetivo del juego.
+	![](img/latinam.png)
 
 
 
+### Proceso sugerido:
+
+1. Proponga un nuevo diseño para la aplicación, donde se tengan clases que encapsulen las operaciones de la aplicación sujetas a eventuales cambios.
+2. Aplique el principio de [Inversión de dependencias](https://dzone.com/articles/the-dependency-inversion-principle-dip-or-d-in-soi) en la manera de relacionar las clases identificadas anteriormente con el _CORE_ de la aplicación.
+2. Con lo anterior, haga un diseño que adicionalmente considere el patrón [Método Fábrica](https://dzone.com/articles/design-patterns-factory) para el problema de la creación de las clases concretas. Tip: los productos concretos serán las clases identificadas en el paso 1.
+
+3. Use como referencia [uno de los ejemplos de implementación disponibles](https://github.com/PDSW-ECI/GoF-FactoryMethod-ReferenceExample), en donde se plantea también el uso del patrón Singleton (para la creación de la fábrica concreta).
 
 
+## Criterios de evaluación
+
+<!--1. Funcionalidad. La aplicación debe poderse configurar, sin tener que tocar el _CORE_ de la misma, para
+	* Usar un formato de documento basado en objetos String serializadas, o uno basado en texto plano.
+
+2. La solución debe quedar abierta para extensión y cerrada para modificación. Es decir, debe permitir (sólo configurando el esquema de fábricas):
+	* Agregar nuevos esquemas de persistencia.
+	* Agregar nuevas estrategias de corrección automática.
+-->
 
 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />Este contenido hace parte del curso Procesos de Desarrollo de Software del programa de Ingeniería de Sistemas de la Escuela Colombiana de Ingeniería, y está licenciado como <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
