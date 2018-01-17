@@ -18,7 +18,7 @@ __Trabajo individual o en parejas__
 * Para descargar la aplicación, desde una terminal, clone el repositorio, y luego abralo con NetBeans:
 
 	```bash
-	git clone https://github.com/PDSW-ECI/GoF-CreationalPatterns-FactoryMethod-Exercise.git
+	git clone https://github.com/hcadavid/GoF-CreationalPatterns-FactoryMethod-Hangman
 	```
 * Para compilar, desde el directorio creado con el paso anterior:
 	```bash
