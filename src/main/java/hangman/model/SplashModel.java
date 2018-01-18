@@ -18,7 +18,7 @@ import java.awt.Color;
  *
  * @author Omar
  */
-public class SplashModel implements PanelModel{
+public class SplashModel {
     private String splashTitle;
     private String teamName;
     private Color backgroundColor;

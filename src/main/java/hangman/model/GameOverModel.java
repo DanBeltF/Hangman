@@ -13,7 +13,7 @@
 ****************************************************************/ 
 package hangman.model;
 
-public class GameOverModel implements PanelModel {
+public class GameOverModel {
     private int score;
     public static final String GAME_OVER_TEXT = "Game Over!";
     private String newGameButtonText;

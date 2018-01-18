@@ -15,7 +15,7 @@ package hangman.model;
 import java.awt.Color;
 import static hangman.SwingProject.CONTRIBUTORS;
 
-public class HighScoreModel implements PanelModel {
+public class HighScoreModel {
     private String highScoreTitle;
     private String[] teamMembers;
     private Color backgroundColor;

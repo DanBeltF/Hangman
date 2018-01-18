@@ -11,7 +11,7 @@ import javax.swing.JComponent;
  *
  * @author Omar
  */
-abstract public class FrameModel{
+abstract public class FrameModel {
     public String title;
     public int windowWidth;
     public int windowHeight;

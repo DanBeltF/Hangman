@@ -15,7 +15,7 @@ package hangman.model;
 import java.awt.Color;
 import static hangman.SwingProject.CONTRIBUTORS;
 
-public class CreditsModel implements PanelModel {
+public class CreditsModel {
     
     //Declare instance variables.
     private String creditsTitle;

@@ -12,30 +12,25 @@
 ****************************************************************/ 
 package hangman.model;
 
-import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
-import javax.swing.ImageIcon;
+import java.util.*;
+
 import hangman.model.dictionary.EnglishDictionaryDataSource;
 
-public class GameModel implements PanelModel{
+public class GameModel {
     private int incorrectCount;
     private int correctCount;
     private LocalDateTime dateTime;
     private int gameScore;
     private int[] lettersUsed;
-    private ArrayList<String> dictionary;
+    private EnglishDictionaryDataSource dictionary;
     private Scanner scan;
     private String randomWord;
     private char[] randomWordCharArray;
-       
     
     public GameModel(){
-        dictionary = new ArrayList<String>();
-        this.readDictionary();
+        this.dictionary = new EnglishDictionaryDataSource();
         randomWord = selectRandomWord();
         randomWordCharArray = randomWord.toCharArray();
         incorrectCount = 0;
@@ -99,22 +94,12 @@ public class GameModel implements PanelModel{
         return gameScore;
     }
 
-    //name: readDictionary()
-    //purpose: reads a given file that contains words for game (dictionary)
-    private void readDictionary() {
-        
-        EnglishDictionaryDataSource edds=new EnglishDictionaryDataSource();
-        edds.getAvailableWords().forEach((w) -> {
-            this.dictionary.add(w);
-        });        
-        
-    }
-    
     //name: selectRandomWord()
     //purpose: selects random word from dictionary
     private String selectRandomWord() {
         Random rand = new Random();
-        return this.dictionary.get(rand.nextInt(this.dictionary.size()));
+        List<String> words = this.dictionary.getAvailableWords();
+        return words.get(rand.nextInt(words.size()));
     }
 
     //method: getIncorrectCount
@@ -146,5 +131,8 @@ public class GameModel implements PanelModel{
     public int getWordLength(){
         return randomWord.length();
     }
-    
+
+    public List<Character> getCharacterSet() {
+        return new ArrayList<>(dictionary.getCharacterSet());
+    }
 }

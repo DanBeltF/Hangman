@@ -106,10 +106,11 @@ public class SwingProject {
                 new FunctionModel(Color.BLACK,"Play","HighScores","Credits"),
                 mainFrameController
         );
-        
+
+        GameModel gameModel = new GameModel();
         gameController = new GameController(
-                new GamePanel(),
-                new GameModel(),
+                new GamePanel(gameModel.getCharacterSet()),
+                gameModel,
                 mainFrameController
         );
         

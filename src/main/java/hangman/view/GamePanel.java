@@ -17,6 +17,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -33,12 +34,13 @@ public class GamePanel extends JPanel{
     JPanel blanksHolder;
     private JButton[] keyboardButtonArray;
     private ArrayList<LetterBlankPanel> blanksArrayList;
+    private List<Character> characterSet;
     
         
-    public GamePanel() {
+    public GamePanel(List<Character> characterSet) {
         blanksHolder = new JPanel();
         blanksArrayList = new ArrayList<>();
-        keyboardButtonArray = new JButton[26];
+        keyboardButtonArray = new JButton[characterSet.size()];
         gameNameLabel = new JLabel("Placeholder");
         gameNameLabel.setForeground(new Color(30,144,255));
         gameNameLabel.setFont(new Font("Impact", Font.PLAIN,24));
@@ -46,6 +48,7 @@ public class GamePanel extends JPanel{
         points  = new JLabel("Placeholder");
         skipButton = new JButton("SKIP");
         hmPanel = new HangmanPanel();
+        this.characterSet = characterSet;
         initComponents();
     }
                         
@@ -85,9 +88,11 @@ public class GamePanel extends JPanel{
         
         JPanel keyboard = new JPanel();
         keyboard.setLayout(new GridLayout(3,1));
-        for(int i=65; i<91; i++){
-            keyboardButtonArray[i-65] = new JButton(Character.toString((char) i));
-            keyboard.add(keyboardButtonArray[i-65]);
+        int i = 0;
+        for(char c : characterSet){
+            keyboardButtonArray[i] = new JButton(Character.toString(c));
+            keyboard.add(keyboardButtonArray[i]);
+            i++;
         }
         bottomContainer.add(keyboard);
         
