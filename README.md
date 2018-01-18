@@ -18,7 +18,7 @@ __Trabajo individual o en parejas__
 * Para descargar la aplicación, desde una terminal, clone el repositorio, y luego abralo con NetBeans:
 
 	```bash
-	git clone https://github.com/hcadavid/GoF-CreationalPatterns-FactoryMethod-Hangman
+	git clone git@github.com:PDSW-ECI/GoF-CreationalPatterns-FactoryMethod-Hangman.git
 	```
 * Para compilar, desde el directorio creado con el paso anterior:
 	```bash
@@ -44,7 +44,7 @@ Se le ha pedido que revise la aplicación y haga con la misma un ejericicio de �
 	* Un conjunto de caracteres diferente (por ejemplo, en español y portugués se tendrán caracteres especiales).
 	* Textos diferentes en las etiquetas y botones de la interfaz de usuario.
 
-- El juego debe poderse adaptar a nuevos estilos visuales del 'ahoracado', nuevamente sin tener que modificar el _CORE_.
+- El juego debe poderse adaptar a nuevos estilos visuales del 'ahorcado', nuevamente sin tener que modificar el _CORE_.
 
 Como prueba de concepto, se espera que la aplicación inicialmente soporte tres idiomas:
 
