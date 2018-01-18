@@ -31,7 +31,7 @@ public class GamePanel extends JPanel{
     private JLabel points;
     private JPanel keyboard;
     private HangmanPanel hmPanel;
-    JPanel blanksHolder;
+    private JPanel blanksHolder;
     private JButton[] keyboardButtonArray;
     private ArrayList<LetterBlankPanel> blanksArrayList;
     private List<Character> characterSet;
