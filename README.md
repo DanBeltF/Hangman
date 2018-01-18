@@ -55,7 +55,7 @@ Como prueba de concepto, se espera que la aplicación inicialmente soporte tres 
 	* Como conjunto de palabras, al menos cinco tomadas de [este enlace.](http://www.clarin.com/sociedad/palabras-mas-usadas-espanol-comunes-frecuentes-diccionario-real_academia_espanola_0_ByLqjSFvmg.html)
 
 - Francés:
-	* El mismo juego de caracteres del inglés, pero incluyendo: à, è, ì, ò, ù .
+	* El mismo juego de caracteres del inglés, pero incluyendo: À, È, Ì	, Ò, Ù.
 	* Como conjunto de palabras, al menos cinco tomadas de [este enlace.](http://www.lexisrex.com/Palabras-Frecuentes-Franc%C3%A9s/page=3).
 
 
