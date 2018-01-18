@@ -13,20 +13,20 @@ import java.util.*;
  * @author hcadavid
  * Modified by fchaves
  */
-public class EnglishDictionaryDataSource extends Dictionary{
+public class FrenchDictionaryDataSource extends Dictionary{
 
 
     static private String words[] = {
-            "PLAYER",
-            "BALL",
-            "SOCCER",
-            "RAGE",
-            "GAME"
+            "TOUS",
+            "AVOIR",
+            "APRÈS",
+            "TRÈS",
+            "VOILÀ"
     };
 
     private List<String> availableWords;
 
-    public EnglishDictionaryDataSource() {
+    public FrenchDictionaryDataSource() {
         characterSet = createCharacterSet();
         availableWords = Arrays.asList(words);
     }
@@ -39,6 +39,14 @@ public class EnglishDictionaryDataSource extends Dictionary{
         return characterSet;
     }
 
-    
-    
+   @Override
+   public List<Character> createCharacterSet() {
+        List<Character> result=super.createCharacterSet();
+        result.add((char) 183);
+        result.add((char) 212);
+        //el de la Ì result.add((char) );
+        result.add((char) 227);
+        result.add((char) 235);
+        return result;
+    }
 }

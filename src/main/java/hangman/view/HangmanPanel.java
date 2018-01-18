@@ -35,6 +35,13 @@ public class HangmanPanel extends JPanel{
         this.incorrectCount = incorrectGuesses;
     }
     
+    public void createHorca(Graphics g, int panelWidth, int panelHeight){
+        g.drawLine(10, panelHeight - 10, (panelWidth / 4) + 10, panelHeight - 10);
+        g.drawLine(((panelWidth/4)/2) + 10, panelHeight - 10,((panelWidth/4)/2) + 10, 10);
+        g.drawLine(((panelWidth/4)/2) + 10, 10, (panelWidth / 4) + 10, 10);
+        g.drawLine((panelWidth / 4) + 10, 10, (panelWidth / 4) + 10, panelHeight / 6);
+    }
+    
     //method: paint
     //purpose: paint the panel with the features of a hangman game, depending on 
     // how many incorrect guesses by the player
@@ -45,10 +52,7 @@ public class HangmanPanel extends JPanel{
         int panelWidth = this.getWidth();
         int panelHeight = this.getHeight();
         
-        g.drawLine(10, panelHeight - 10, (panelWidth / 4) + 10, panelHeight - 10);
-        g.drawLine(((panelWidth/4)/2) + 10, panelHeight - 10,((panelWidth/4)/2) + 10, 10);
-        g.drawLine(((panelWidth/4)/2) + 10, 10, (panelWidth / 4) + 10, 10);
-        g.drawLine((panelWidth / 4) + 10, 10, (panelWidth / 4) + 10, panelHeight / 6);
+       
         
         
         if(incorrectCount > 0){
