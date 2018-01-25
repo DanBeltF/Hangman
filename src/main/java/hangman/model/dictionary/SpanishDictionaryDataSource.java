@@ -13,8 +13,7 @@ import java.util.*;
  * @author hcadavid
  * Modified by fchaves
  */
-public class SpanishDictionaryDataSource extends Dictionary{
-
+public class SpanishDictionaryDataSource extends OccidentalDictionary {
 
     static private String words[] = {
             "GENERAL",
@@ -26,23 +25,20 @@ public class SpanishDictionaryDataSource extends Dictionary{
 
     private List<String> availableWords;
 
-    public SpanishDictionaryDataSource() {
-        characterSet = createCharacterSet();
-        availableWords = Arrays.asList(words);
-    }
+    public SpanishDictionaryDataSource() {        
+        setAvalariableWords(Arrays.asList(words));
+    }  
 
-    public List<String> getAvailableWords(){
-        return Arrays.asList(words);
-    }
-
-    public List<Character> getCharacterSet() {
-        return characterSet;
-    }
-
+   
     @Override
     public List<Character> createCharacterSet() {
         List<Character> result=super.createCharacterSet();
-        result.add((char) 165);
+        result.add((char) 209);
         return result;
     }
+
+	@Override
+	public List<String> getAvailableWords() {
+		return Arrays.asList(words);
+	}
 }

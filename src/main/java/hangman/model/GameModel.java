@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+import hangman.model.dictionary.Dictionary;
 import hangman.model.dictionary.EnglishDictionaryDataSource;
 
 public class GameModel {
@@ -24,7 +25,7 @@ public class GameModel {
     private LocalDateTime dateTime;
     private int gameScore;
     private int[] lettersUsed;
-    private EnglishDictionaryDataSource dictionary;
+    private Dictionary dictionary;
     private Scanner scan;
     private String randomWord;
     private char[] randomWordCharArray;
@@ -133,6 +134,6 @@ public class GameModel {
     }
 
     public List<Character> getCharacterSet() {
-        return new ArrayList<>(dictionary.getCharacterSet());
+        return new ArrayList<>( dictionary.getCharacterSet());
     }
 }

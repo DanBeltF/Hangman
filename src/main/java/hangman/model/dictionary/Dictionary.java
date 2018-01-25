@@ -13,23 +13,12 @@ import java.util.List;
  *
  * @author 2104784
  */
-public abstract class Dictionary {
-    
-    protected List<Character> characterSet;
+public interface  Dictionary {	
  
     public abstract List<String> getAvailableWords();
-
+      
     public abstract List<Character> getCharacterSet();
     
-    
-    public List<Character>  createCharacterSet() {
-        List<Character> result = new ArrayList<>();
-        char begin = 65;
-        char end = 65+26;
-        for(char c = begin;c < end;c++) {
-            result.add(c);
-        }
-        return result;
-    }
-
+    public abstract List<Character> createCharacterSet();    
+   
 }

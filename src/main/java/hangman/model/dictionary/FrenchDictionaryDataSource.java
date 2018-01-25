@@ -13,8 +13,7 @@ import java.util.*;
  * @author hcadavid
  * Modified by fchaves
  */
-public class FrenchDictionaryDataSource extends Dictionary{
-
+public class FrenchDictionaryDataSource extends OccidentalDictionary{
 
     static private String words[] = {
             "TOUS",
@@ -22,31 +21,26 @@ public class FrenchDictionaryDataSource extends Dictionary{
             "APRÈS",
             "TRÈS",
             "VOILÀ"
-    };
+    };   
 
-    private List<String> availableWords;
-
-    public FrenchDictionaryDataSource() {
-        characterSet = createCharacterSet();
-        availableWords = Arrays.asList(words);
+    public FrenchDictionaryDataSource() {        
+    	setAvalariableWords(Arrays.asList(words));
     }
 
     public List<String> getAvailableWords(){
         return Arrays.asList(words);
     }
 
-    public List<Character> getCharacterSet() {
-        return characterSet;
-    }
+   
 
    @Override
    public List<Character> createCharacterSet() {
         List<Character> result=super.createCharacterSet();
-        result.add((char) 183);
-        result.add((char) 212);
-        //el de la Ì result.add((char) );
-        result.add((char) 227);
-        result.add((char) 235);
+        result.add((char) 192);
+        result.add((char) 200);
+        result.add((char) 204);
+        result.add((char) 210);
+        result.add((char) 217);
         return result;
     }
 }

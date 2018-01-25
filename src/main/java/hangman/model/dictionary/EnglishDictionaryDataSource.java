@@ -13,32 +13,21 @@ import java.util.*;
  * @author hcadavid
  * Modified by fchaves
  */
-public class EnglishDictionaryDataSource extends Dictionary{
-
-
+public class EnglishDictionaryDataSource extends OccidentalDictionary {
+    
     static private String words[] = {
             "PLAYER",
             "BALL",
             "SOCCER",
             "RAGE",
             "GAME"
-    };
+    };    
 
-    private List<String> availableWords;
-
-    public EnglishDictionaryDataSource() {
-        characterSet = createCharacterSet();
-        availableWords = Arrays.asList(words);
+    public EnglishDictionaryDataSource() {        
+        setAvalariableWords(Arrays.asList(words));
     }
 
     public List<String> getAvailableWords(){
         return Arrays.asList(words);
-    }
-
-    public List<Character> getCharacterSet() {
-        return characterSet;
-    }
-
-    
-    
+    }   
 }
